@@ -37,18 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const successContent = document.getElementById('success-content');
 
     const moveButton = () => {
-        const container = document.querySelector('.card-body'); // Constrain within the card
-        const btnRect = noBtn.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
+        // Allow button to run anywhere on screen (escape the card)
+        const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-        // Calculate max bounds within the container
-        const maxX = containerRect.width - btnRect.width;
-        const maxY = containerRect.height - btnRect.height;
+        const randomX = Math.max(10, Math.random() * maxX);
+        const randomY = Math.max(10, Math.random() * maxY);
 
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+        // Move to body to avoid being trapped by card's transform/overflow
+        if (noBtn.parentNode !== document.body) {
+            document.body.appendChild(noBtn);
+        }
 
-        noBtn.style.position = 'absolute';
+        noBtn.style.position = 'fixed';
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
 
