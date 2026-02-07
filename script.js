@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Change No button text
-        noClickCount++;
         const phraseIndex = noClickCount < noTexts.length ? noClickCount : Math.floor(Math.random() * noTexts.length);
         const newText = noTexts[phraseIndex];
 
         noBtn.innerText = newText;
+        noClickCount++;
 
         // Remove H1 update logic to keep the proposal text visible
     };
