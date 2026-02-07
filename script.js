@@ -37,28 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const successContent = document.getElementById('success-content');
 
     const moveButton = () => {
-        const container = document.querySelector('.card-body'); // Constraint back to card
+        const container = document.querySelector('.container');
         const btnRect = noBtn.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
 
-        // Calculate max bounds within the container
-        const maxX = containerRect.width - btnRect.width;
-        const maxY = containerRect.height - btnRect.height;
+        const maxX = window.innerWidth - btnRect.width - 50;
+        const maxY = window.innerHeight - btnRect.height - 50;
 
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
 
-        // Ensure it stays in the card
-        if (noBtn.parentNode !== container) {
-            container.appendChild(noBtn);
-        }
-
-        noBtn.style.position = 'absolute';
+        noBtn.style.position = 'fixed';
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
 
-        // Increase Yes button size (DISABLED as per request)
-        /* 
+        // Increase Yes button size
         let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
         let currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
 
@@ -71,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             yesBtn.style.fontSize = newSize + 'px';
             yesBtn.style.padding = newPadding + 'px ' + (newPadding * 2.5) + 'px';
         }
-        */
 
         // Change No button text
         noClickCount++;
@@ -95,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     yesBtn.addEventListener('click', () => {
         document.getElementById(`step-${currentStep}`).classList.add('hidden');
-        noBtn.style.display = 'none'; // Hide No button since it might be attached to body
         successContent.classList.remove('hidden');
         successContent.classList.add('active');
 
