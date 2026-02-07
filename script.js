@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
 
-        // Increase Yes button size
+        // Increase Yes button size (DISABLED as per request)
+        /* 
         let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
         let currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
 
@@ -65,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
             yesBtn.style.fontSize = newSize + 'px';
             yesBtn.style.padding = newPadding + 'px ' + (newPadding * 2.5) + 'px';
         }
+        */
 
         // Change No button text
         noClickCount++;
-        // Loop through the array sequentially
-        const phraseIndex = noClickCount % noTexts.length;
+        const phraseIndex = noClickCount < noTexts.length ? noClickCount : Math.floor(Math.random() * noTexts.length);
         const newText = noTexts[phraseIndex];
 
         noBtn.innerText = newText;
