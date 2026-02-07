@@ -55,11 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
 
         // Cap the size to prevent it from breaking the layout completely
-        const maxSize = 150; // Max font size in px
+        const maxSize = 80; // Max font size in px (reduced from 150)
 
         if (currentSize < maxSize) {
-            let newSize = currentSize * 1.2;
-            let newPadding = currentPadding * 1.2;
+            let newSize = currentSize * 1.1; // Reduced growth rate from 1.2
+            let newPadding = currentPadding * 1.1;
             yesBtn.style.fontSize = newSize + 'px';
             yesBtn.style.padding = newPadding + 'px ' + (newPadding * 2.5) + 'px';
         }
