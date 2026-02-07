@@ -51,23 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isMusicPlaying = !isMusicPlaying;
     });
 
-    // Try to auto-play on first interaction
-    const startMusic = () => {
-        if (!isMusicPlaying) {
-            bgMusic.play().then(() => {
-                isMusicPlaying = true;
-                musicBtn.innerText = "⏸ Pause Music";
-            }).catch(error => {
-                console.log("Autoplay prevented, waiting for user interaction");
-            });
-            // Remove listeners after first attempt
-            document.removeEventListener('click', startMusic);
-            document.removeEventListener('touchstart', startMusic);
-        }
-    };
-
-    document.addEventListener('click', startMusic);
-    document.addEventListener('touchstart', startMusic);
+    // Music will only play when YES button is clicked
 
     const moveButton = () => {
         const container = document.querySelector('.container');
@@ -118,6 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     yesBtn.addEventListener('click', () => {
+        // Start playing music when YES is clicked
+        if (!isMusicPlaying) {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicBtn.innerText = "⏸ Pause Music";
+            }).catch(error => {
+                console.log("Music playback failed:", error);
+            });
+        }
+
         document.getElementById(`step-${currentStep}`).classList.add('hidden');
         successContent.classList.remove('hidden');
         successContent.classList.add('active');
