@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     yesBtn.addEventListener('click', () => {
         document.getElementById(`step-${currentStep}`).classList.add('hidden');
+        noBtn.style.display = 'none'; // Hide No button since it might be attached to body
         successContent.classList.remove('hidden');
         successContent.classList.add('active');
 
