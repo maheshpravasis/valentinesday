@@ -64,19 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
             yesBtn.style.padding = newPadding + 'px ' + (newPadding * 2.5) + 'px';
         }
 
-        // Change No button text AND Main Heading
+        // Change No button text
         noClickCount++;
         const phraseIndex = noClickCount < noTexts.length ? noClickCount : Math.floor(Math.random() * noTexts.length);
         const newText = noTexts[phraseIndex];
 
         noBtn.innerText = newText;
 
-        // Update the active step's heading content to match the mood
-        // We only want to update the heading of the Proposal Step (Step 3)
-        const proposalHeading = document.querySelector('#step-3 h1');
-        if (proposalHeading) {
-            proposalHeading.innerHTML = newText + " 💔<br>(Click Yes!)";
-        }
+        // Remove H1 update logic to keep the proposal text visible
     };
 
     noBtn.addEventListener('mouseover', moveButton);

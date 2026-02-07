@@ -84,13 +84,20 @@ p {
 }
 
 .no-btn {
-    background-color: var(--btn-no-bg);
-    color: var(--btn-no-text);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    /* Needed for absolute positioning movement */
+    background-color: #f1f1f1;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    /* Changed to absolute to float */
+    font-weight: 700;
     transition: all 0.3s ease;
-    /* Smooth movement */
+    z-index: 10;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.no-btn:hover {
+    background-color: #e5e5e5;
 }
 
 .step {
