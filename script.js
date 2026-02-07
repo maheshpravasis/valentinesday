@@ -1,7 +1,6 @@
 let currentStep = 1;
 let noClickCount = 0;
-const noTexts = [
-    "No",
+"No",
     "Are you sure?",
     "Really sure?",
     "Think again!",
@@ -18,8 +17,9 @@ const noTexts = [
     "Is that your final answer?",
     "You're breaking my heart ;(",
     "I'm gonna cry...",
-    "Plsss? :("
-];
+    "Plsss? :(",
+    "Don't do this to me 💔",
+    "You are breaking my heart 💔"
 
 function nextStep(step) {
     document.getElementById(`step-${currentStep}`).classList.remove('active');
