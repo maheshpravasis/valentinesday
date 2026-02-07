@@ -161,3 +161,35 @@ p {
         opacity: 0;
     }
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .gif-img {
+        height: 140px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .buttons {
+        gap: 10px;
+        flex-wrap: wrap;
+        /* Allow wrapping if button gets huge */
+    }
+}

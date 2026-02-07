@@ -54,8 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
         let currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
 
-        yesBtn.style.fontSize = (currentSize * 1.2) + 'px';
-        yesBtn.style.padding = (currentPadding * 1.2) + 'px ' + (currentPadding * 2.5) + 'px';
+        // Cap the size to prevent it from breaking the layout completely
+        const maxSize = 150; // Max font size in px
+
+        if (currentSize < maxSize) {
+            let newSize = currentSize * 1.2;
+            let newPadding = currentPadding * 1.2;
+            yesBtn.style.fontSize = newSize + 'px';
+            yesBtn.style.padding = newPadding + 'px ' + (newPadding * 2.5) + 'px';
+        }
 
         // Change No button text AND Main Heading
         noClickCount++;
