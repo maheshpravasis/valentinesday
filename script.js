@@ -57,12 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
         yesBtn.style.fontSize = (currentSize * 1.2) + 'px';
         yesBtn.style.padding = (currentPadding * 1.2) + 'px ' + (currentPadding * 2.5) + 'px';
 
-        // Change No button text
+        // Change No button text AND Main Heading
         noClickCount++;
-        if (noClickCount < noTexts.length) {
-            noBtn.innerText = noTexts[noClickCount];
-        } else {
-            noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+        const phraseIndex = noClickCount < noTexts.length ? noClickCount : Math.floor(Math.random() * noTexts.length);
+        const newText = noTexts[phraseIndex];
+
+        noBtn.innerText = newText;
+
+        // Update the active step's heading content to match the mood
+        // We only want to update the heading of the Proposal Step (Step 3)
+        const proposalHeading = document.querySelector('#step-3 h1');
+        if (proposalHeading) {
+            proposalHeading.innerHTML = newText + " 💔<br>(Click Yes!)";
         }
     };
 
