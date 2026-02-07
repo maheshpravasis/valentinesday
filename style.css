@@ -47,6 +47,8 @@ p {
     height: 180px;
     object-fit: contain;
     border-radius: 12px;
+    mix-blend-mode: multiply;
+    /* Removes white background from GIFs */
 }
 
 /* Custom Button Styles */
