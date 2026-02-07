@@ -35,6 +35,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('no-btn');
     const yesBtn = document.getElementById('yes-btn');
     const successContent = document.getElementById('success-content');
+    const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    let isMusicPlaying = false;
+
+    // Music Control
+    musicBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+            bgMusic.pause();
+            musicBtn.innerText = "🎵 Play Music";
+        } else {
+            bgMusic.play();
+            musicBtn.innerText = "⏸ Pause Music";
+        }
+        isMusicPlaying = !isMusicPlaying;
+    });
+
+    // Try to auto-play on first interaction
+    const startMusic = () => {
+        if (!isMusicPlaying) {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicBtn.innerText = "⏸ Pause Music";
+            }).catch(error => {
+                console.log("Autoplay prevented, waiting for user interaction");
+            });
+            // Remove listeners after first attempt
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('touchstart', startMusic);
+        }
+    };
+
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
 
     const moveButton = () => {
         const container = document.querySelector('.container');
