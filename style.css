@@ -50,7 +50,7 @@ p {
     gap: 20px;
     position: relative;
     /* Ensure sufficient height for moving button if needed */
-    min-height: 60px; 
+    min-height: 60px;
 }
 
 .btn {
@@ -79,11 +79,28 @@ p {
     background-color: var(--btn-no-bg);
     color: var(--btn-no-text);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Needed for absolute positioning movement */
+    position: relative;
+    /* Needed for absolute positioning movement */
 }
 
-.hidden {
+.step {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.step.active {
+    opacity: 1;
+    display: block;
+}
+
+.step.hidden {
+    opacity: 0;
     display: none;
+    pointer-events: none;
+}
+
+.yes-btn.growing {
+    font-size: 1.5rem !important;
+    padding: 15px 40px !important;
 }
 
 .heart-animation {
@@ -93,11 +110,25 @@ p {
 }
 
 @keyframes heartbeat {
-    0% { transform: scale(1); }
-    15% { transform: scale(1.3); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.3);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
 }
 
 /* Floating hearts background animation */
@@ -110,6 +141,13 @@ p {
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 0.6; }
-    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
 }
