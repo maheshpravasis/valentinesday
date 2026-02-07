@@ -37,16 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const successContent = document.getElementById('success-content');
 
     const moveButton = () => {
-        const container = document.querySelector('.container');
+        const container = document.querySelector('.card-body'); // Constrain within the card
         const btnRect = noBtn.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
 
-        const maxX = window.innerWidth - btnRect.width - 50;
-        const maxY = window.innerHeight - btnRect.height - 50;
+        // Calculate max bounds within the container
+        const maxX = containerRect.width - btnRect.width;
+        const maxY = containerRect.height - btnRect.height;
 
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
 
-        noBtn.style.position = 'fixed';
+        noBtn.style.position = 'absolute';
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
 
