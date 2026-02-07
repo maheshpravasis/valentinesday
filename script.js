@@ -1,6 +1,25 @@
 let currentStep = 1;
 let noClickCount = 0;
-const noTexts = ["No", "Are you sure?", "Really?", "Think again!", "Last chance!", "Pretty please?", "Don't do this!", "I'm gonna cry...", "You're breaking my heart ;("];
+const noTexts = [
+    "No",
+    "Are you sure?",
+    "Really sure?",
+    "Think again!",
+    "Last chance!",
+    "Surely not?",
+    "You might regret this!",
+    "Give it another thought!",
+    "Are you absolutely certain?",
+    "This could be a mistake!",
+    "Have a heart!",
+    "Don't be so cold!",
+    "Change of heart?",
+    "Wouldn't you reconsider?",
+    "Is that your final answer?",
+    "You're breaking my heart ;(",
+    "I'm gonna cry...",
+    "Plsss? :("
+];
 
 function nextStep(step) {
     document.getElementById(`step-${currentStep}`).classList.remove('active');
